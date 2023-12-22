@@ -1,4 +1,4 @@
-import random
+    import random
 
 class NPC:
     def __init__(self, nom, race, espèce, profession):
@@ -45,12 +45,15 @@ class Héros(NPC):
         roll = random.randint(1, 20)
         if roll == 20:
             print(f"Coup critique ! {cible.nom} subit {random.randint(1, 8)} points de dommage !")
+            cible.subir_dommage(random.randint(1,8))
         elif roll == 1:
             print(f"Attaque ratée !")
         elif roll >= cible.classe_armure:
             print(f"{cible.nom} est touché ! {cible.nom} subit {random.randint(1, 6)} points de dommage !")
+            cible.subir_dommage(random.randint(1, 6))
         else:
             print(f"{cible.nom} esquive l'attaque !")
 
     def subir_dommage(self, dommage):
         print(f"{self.nom} subit {dommage} points de dommage !")
+        self.point_de_vie -= dommage
